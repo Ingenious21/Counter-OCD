@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+<body>
+
+    <style>
+
+        .container{
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            text-align: center;
+            margin: 100px auto;
+            width: 600px;
+            height: 400px;
+            background-color: #005C78;
+            border: 2px solid #26355D;
+            border-radius: 5px;
+        }
+
+        .container h1 {
+            color: #fff;
+            font-size: 40px;
+            margin: 0;
+        }
+
+        .container h2 {
+            background-color: #fff;
+            color: black;
+            font-size: 50px;
+        } 
+
+        #increment {
+            background-color: #1A4D2E;
+            color: #fff;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        #reset {
+            background-color: grey;
+            color: #fff;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        #decrement {
+            background-color: red;
+            color: #fff;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+    </style>
+
+    <div class="container">
+        <h1>Counter</h1>
+        <h2 id="counter">0</h2>
+    
+        <div>
+        <button onclick="" id="decrement">Decrement</button>
+        <button id="reset">Reset</button>
+        <button id="increment">Increment</button>
+        </div>
+    </div>
+
+    <script>
+        function counter(){
+            const counterElement = document.getElementById("counter");
+            const incrementButton = document.getElementById("increment");
+            const decrementButton = document.getElementById("decrement");
+            const resetButton = document.getElementById("reset");
+
+            incrementButton.addEventListener("click", function(){
+                counterElement.innerHTML = parseInt(counterElement.innerHTML) + 1;
+                updateColor(counterElement);
+            });
+
+            decrementButton.addEventListener("click", function(){
+                counterElement.innerHTML = parseInt(counterElement.innerHTML) - 1;
+                updateColor(counterElement);
+            });
+
+            resetButton.addEventListener("click", function(){
+                counterElement.innerHTML = 0;
+                updateColor(counterElement);
+            });
+        }
+
+        function updateColor(counterElement){
+            const count = parseInt(counterElement.innerHTML);
+            if (count < 0){
+                counterElement.style.color = "red";
+            }
+            else if (count > 0)
+            {
+                counterElement.style.color = "green";
+            }
+            else {
+                counterElement.style.color = "black";
+            }
+        }
+            
+        counter();
+    </script>
+
+</body>
+</html>
